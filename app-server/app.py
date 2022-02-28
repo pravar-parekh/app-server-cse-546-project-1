@@ -54,3 +54,4 @@ if __name__ == "__main__":
             bashCommand = "python3 face_recognition.py " + image_name
             process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
             output, error = process.communicate()
+            print(output)
