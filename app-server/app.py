@@ -34,10 +34,10 @@ def receive_message():
         delete_message(message['ReceiptHandle'])
 
     if len(response.get('Messages', [])) > 0 :
-        return True
+        return True, "img/test_00.jpg"
     
     else: 
-        return False
+        return False, ""
 
 def delete_message(receipt_handle):
     response = sqs.delete_message(
