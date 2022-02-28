@@ -1,6 +1,7 @@
 from urllib import response
 import boto3, json
 
+
 sqs = boto3.client("sqs")
 request_queue_url = 'https://sqs.us-east-1.amazonaws.com/547230687929/Request_Queue'
 response_queue_url = 'https://sqs.us-east-1.amazonaws.com/547230687929/Response_Queue'
@@ -30,6 +31,12 @@ def receive_message():
         send_message()
         delete_message(message['ReceiptHandle'])
 
+    if len(response.get('Messages', [])) > 0 :
+        return True
+    
+    else: 
+        return False
+
 def delete_message(receipt_handle):
     response = sqs.delete_message(
         QueueUrl=request_queue_url,
@@ -38,4 +45,6 @@ def delete_message(receipt_handle):
     print(response)
 
 if __name__ == "__main__":
-    receive_message()
+    run_flag = False
+    while(run_flag == False):
+        run_flag = receive_message()
