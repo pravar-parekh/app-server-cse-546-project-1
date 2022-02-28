@@ -51,6 +51,6 @@ if __name__ == "__main__":
         run_flag, image_name = receive_message()
 
         if run_flag:
-            bashCommand = "python3 face_recognition.py " + image_name
+            bashCommand = "python3 ../../face_recognition.py " + image_name
             process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
             output, error = process.communicate()
