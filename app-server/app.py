@@ -1,5 +1,4 @@
 from cProfile import run
-from tkinter import image_names
 from urllib import response
 import boto3, json
 import subprocess
